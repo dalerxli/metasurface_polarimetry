@@ -4,7 +4,7 @@ Created on Wed Jun 21 09:42:59 2017
 
 This is a script to analyze polarimetry calibration data.
 
-@contributors: Noah, Ruoping
+@contributors: Noah, Ruoping, Michael
 """
 #%reset -f
 
@@ -36,7 +36,7 @@ power_meter_error = 0.001 #Error in power meter reading from ambient light, unit
 if 'linux' or 'darwin' in sys.platform:
     data_dir = 'acquisition/data/incident_angles_calibration'
 else:
-    data_dir = 'acquisition\\data\\incident_angles_calibration\\20deg'
+    data_dir = 'acquisition\\data\\incident_angles_calibration\\'
 
 os.chdir(data_dir)
 angledirs = ['0deg','5deg','10deg','15deg','20deg']
@@ -742,18 +742,18 @@ def plot_color_sphere(ax, S, err, title, vinkel):
 
 save_fig = 1
 os.chdir('../../../Graphics/angle/4D Eucledean dist')
+for w in range(len(angledirs)-1):
+    plot_color_sphere(plt.gca(), S, err,"4D Eucledean dist", angledirs[w+1])
+    
 #for w in range(len(angledirs)-1):
-#    plot_color_sphere(plt.gca(), S, err,"4D Eucledean dist", angledirs[w+1])
-    
-for w in range(len(angledirs)-1):
-    plot_color_sphere(plt.gca(), S, dS1, "S1 error", angledirs[w+1])
-    
-for w in range(len(angledirs)-1):
-    plot_color_sphere(plt.gca(), S, dS2, "S2 error", angledirs[w+1])
-    
-for w in range(len(angledirs)-1):
-    plot_color_sphere(plt.gca(), S, dS3, "S3 error", angledirs[w+1])
-
-for w in range(len(angledirs)-1):
-    plot_color_sphere(plt.gca(), S, dDOP, "DOP error", angledirs[w+1])
+#    plot_color_sphere(plt.gca(), S, dS1, "S1 error", angledirs[w+1])
+#    
+#for w in range(len(angledirs)-1):
+#    plot_color_sphere(plt.gca(), S, dS2, "S2 error", angledirs[w+1])
+#    
+#for w in range(len(angledirs)-1):
+#    plot_color_sphere(plt.gca(), S, dS3, "S3 error", angledirs[w+1])
+#
+#for w in range(len(angledirs)-1):
+#    plot_color_sphere(plt.gca(), S, dDOP, "DOP error", angledirs[w+1])
 

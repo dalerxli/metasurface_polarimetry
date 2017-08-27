@@ -14,9 +14,12 @@ plt.rcParams['svg.fonttype'] = 'none'
 
 if 'linux' in sys.platform:
     directory = 'acquisition/data/big_metasurface'
-    directory = 'acquisition/data/small_metasurfaces/top2_left3'
+    directory = 'acquisition/data/small_metasurfaces/top3_left3'
 else:
-    directory = 'acquisition\\data\\small_metasurfaces\\top5_left2'
+    directory = 'acquisition\\data\\small_metasurfaces\\top3_left3'
+
+#top3_left3
+#top4_left1
 
 subdirs = ['order_-2', 'order_-1', 'order_1', 'order_2']
 os.chdir(directory)
@@ -106,6 +109,7 @@ def fetch_data(directory):
 
 
 #############################################################################
+
 #%% plotting on Poincare sphere
 
 class Arrow3D(FancyArrowPatch):
@@ -250,7 +254,7 @@ my_dpi=192
 fig, axarr = plt.subplots(1,4, figsize=(fig_x, fig_y), dpi=my_dpi)
 
 # directories over which to plot
-directories = ['acquisition\\data\\small_metasurfaces\\top5_left2']
+directories = ['acquisition\\data\\small_metasurfaces\\top4_left1']
 scalings = [0.8]
 ret = os.getcwd()
 os.chdir('../../../../')

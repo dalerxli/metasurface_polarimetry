@@ -561,13 +561,39 @@ for i in range(len(pd1_voltage)):
     dops.append(dop)
     stokes_list.append(stokes/stokes[0])
     
-plt.figure(2)
-plt.scatter(np.arange(len(dops)),dops)
-plt.plot([0,len(dops)],[1,1],alpha=0.3, color='black')
+fig = plt.figure(2)
+ax = fig.gca()
+ax.scatter(angles,dops, facecolor='blue', edgecolor='blue')
+ax.plot([min(angles),max(angles)],[1,1],alpha=0.3, color='black')
+ax.set_ylabel('Degree of polarization (DOP)', size=18)
+ax.set_xlabel('Linear polarizer angle ($\degree$)', size=18)
+ax.set_xlim([min(angles), max(angles)])
+ax.set_title('Linear polarization consistency check', size=18)
+
+minor_locatorx = AutoMinorLocator(2)
+minor_locatory = AutoMinorLocator(2)
+
+ax.xaxis.set_minor_locator(minor_locatorx)
+ax.yaxis.set_minor_locator(minor_locatory)
+tick_label_size = 12
+ax.tick_params(axis='x', labelsize = tick_label_size, direction='in', length=major_length, width=major_width, which = 'major', color='k', top='off')
+ax.tick_params(axis='x', labelsize = tick_label_size, direction='in', length=minor_length, width=minor_width, which = 'minor', color='k', top='off')
+ax.tick_params(axis='y', labelsize = tick_label_size, direction='in', length=major_length, width=major_width, which = 'major', top='off', color='k')
+ax.tick_params(axis='y', labelsize = tick_label_size, direction='in', length=minor_length, width=minor_width, which = 'minor', top='off', color='k')
 plt.show()
 
 L = np.array([pd1L, pd2L, pd3L, pd4L])
 stokes=np.dot(Ainv, L)
+
+# save the consistency check figure
+save_fig=1
+if save_fig:
+    ret = os.getcwd()
+    file_name = 'consistency_check.pdf'
+    os.chdir('../../../../Graphics/Supplement_Graphics/')
+    plt.savefig(file_name, format='pdf')
+    os.chdir(ret)
+    print('Consistency check figure saved.')
 
 #%% Extract and analyze the partial pol data
 pol_angles2 = []
@@ -708,30 +734,31 @@ pol_angles2 = np.array(pol_angles2)
 # plot points and error bars over whole range first
 plt.figure(3)
 
-N = 3 # take every Nth datapoint
-save_fig = 1 # if 1, save the figures
+N = 1 # take every Nth datapoint
 
 min_angle= 0
-max_angle = 90
+max_angle = max(pol_angles2)
 axes = plt.gca()
 partial_pol_fig(axes, partial_dops_err[::N], pol_angles2[::N], partial_dops[::N], min_angle, max_angle)
 
-N = 1
-zoom = 4
-axins_dop = zoomed_inset_axes(axes, zoom, loc=4)
-min_angle= 42.5
-max_angle = 47.5
-mask_inset = np.logical_and((pol_angles2>=min_angle), (pol_angles2<=max_angle))
-pol_angles_inset =pol_angles2[mask_inset]
-dops_inset = partial_dops[mask_inset]
-dops_err_inset = partial_dops_err[mask_inset]
-
-x1, x2, y1, y2 = min_angle, max_angle, 0, 1.1*np.max(dops_inset)
-axins_dop.set_xlim(x1, x2) # apply the x-limits
-axins_dop.set_ylim(y1, y2) # apply the y-limits
-mark_inset(axes, axins_dop, loc1=2, loc2=1, fc="none", ec='k')
-axins_dop.tick_params(axis='x', labelsize=0.5)
-axins_dop.set_xticks([min_angle,45,max_angle])
+inset=False
+if inset:
+    N = 1
+    zoom = 4
+    axins_dop = zoomed_inset_axes(axes, zoom, loc=4)
+    min_angle= 42.5
+    max_angle = 47.5
+    mask_inset = np.logical_and((pol_angles2>=min_angle), (pol_angles2<=max_angle))
+    pol_angles_inset =pol_angles2[mask_inset]
+    dops_inset = partial_dops[mask_inset]
+    dops_err_inset = partial_dops_err[mask_inset]
+    
+    x1, x2, y1, y2 = min_angle, max_angle, 0, 1.1*np.max(dops_inset)
+    axins_dop.set_xlim(x1, x2) # apply the x-limits
+    axins_dop.set_ylim(y1, y2) # apply the y-limits
+    mark_inset(axes, axins_dop, loc1=2, loc2=1, fc="none", ec='k')
+    axins_dop.tick_params(axis='x', labelsize=0.5)
+    axins_dop.set_xticks([min_angle,45,max_angle])
 
 
 
@@ -745,7 +772,7 @@ for tick in axins_dop.xaxis.get_major_ticks():
 axes.set_xlabel('Linear polarizer orientation ($\degree$)', size=14)
 axes.set_ylabel('Degree of Polarization (DOP)', size=14)
 
-save_fig = 1
+save_fig = 0
 if save_fig:
     ret = os.getcwd()
     file_name = 'partial_pol.svg'
