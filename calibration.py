@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Jun 21 09:42:59 2017
-
 This is a script to analyze polarimetry calibration data.
-
 @contributors: Noah, Ruoping
 """
 import os, re, pickle
@@ -68,7 +66,6 @@ def covS(i, j, D, I, Dcov, Icov):
 
 def qwp_err(pd_arr):
     '''function returning list of qwp measurement averages for error analysis
-
     pd_arr: 1xn array with photodiode voltages, spanning the entire 360 degrees
     '''
     # must be an even # of measurements in the end and we divide total number by two                                     so it must be an even multiple of 4

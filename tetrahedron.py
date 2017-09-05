@@ -12,7 +12,7 @@ from matplotlib.colors import LightSource
 import random
 plt.rcParams['svg.fonttype'] = 'none'
 
-if 'linux' in sys.platform:
+if 'linux' or 'darwin' in sys.platform:
     directory = 'acquisition/data/big_metasurface'
     directory = 'acquisition/data/small_metasurfaces/top3_left3'
 else:
