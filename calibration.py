@@ -30,7 +30,7 @@ data_dir = 'acquisition\data\calibration1'
 if 'linux' in sys.platform:
     data_dir = 'acquisition/data/calibration8'
 else:
-    data_dir = 'acquisition\data\calibration8'
+    data_dir = 'acquisition\data\calibration1'
 
 
 
@@ -388,7 +388,7 @@ for i in range(2):
     pd4_voltage_err = pd4_voltageQR * np.sqrt((pd4_voltage_err/pd4_voltageQR)**2 + (power_meter_error/qwp_power_incR)**2)
     
     # adding in the error from power meter
-#    pd1_voltage_err=np.sqrt((pd1_voltage_err/qwp_power_incR)**2+(power_meter_error*pd1_voltage_err/(qwp_power_incR**2))**2)
+# pd1_voltage_err=np.sqrt((pd1_voltage_err/qwp_power_incR)**2+(power_meter_error*pd1_voltage_err/(qwp_power_incR**2))**2)
 #    pd2_voltage_err=np.sqrt((pd2_voltage_err/qwp_power_incR)**2+(power_meter_error*pd2_voltage_err/(qwp_power_incR**2))**2)
 #    pd3_voltage_err=np.sqrt((pd3_voltage_err/qwp_power_incR)**2+(power_meter_error*pd3_voltage_err/(qwp_power_incR**2))**2)
 #    pd4_voltage_err=np.sqrt((pd4_voltage_err/qwp_power_incR)**2+(power_meter_error*pd4_voltage_err/(qwp_power_incR**2))**2)

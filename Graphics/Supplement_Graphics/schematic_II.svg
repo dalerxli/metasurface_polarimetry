@@ -21,6 +21,21 @@
   <defs
      id="defs10375">
     <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker12222"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleInL">
+      <path
+         transform="scale(-0.8,-0.8)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="m 5.77,0 -8.65,5 0,-10 8.65,5 z"
+         id="path12224"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
        inkscape:stockid="Arrow2Lend"
        orient="auto"
        refY="0"
@@ -449,7 +464,8 @@
        refX="0"
        id="marker13128"
        style="overflow:visible"
-       inkscape:isstock="true">
+       inkscape:isstock="true"
+       inkscape:collect="always">
       <path
          inkscape:connector-curvature="0"
          id="path13130"
@@ -481,8 +497,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="663.19029"
-     inkscape:cy="93.095408"
+     inkscape:cx="625.43584"
+     inkscape:cy="113.29846"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -870,7 +886,7 @@
        inkscape:connector-curvature="0"
        id="path8731"
        d="m 562.76481,180.8335 a 11.57521,12.469675 45 0 1 11.79389,-3.5282 11.57521,12.469675 45 0 1 8.14929,8.30052 11.57521,12.469675 45 0 1 -3.72505,11.74678"
-       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.09260714;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#TriangleOutL)" />
+       style="fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.093;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#TriangleOutL);marker-start:url(#marker12222)" />
     <g
        style="stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:100000"
        transform="matrix(0.3170545,0,0,0.41151417,480.89439,-3.2921314)"

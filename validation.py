@@ -12,6 +12,9 @@ DOP_CUTOFF=0
 
 #os.chdir('../../../..')
 
+# ellipticity/azimuth data is taken from calibration4/comparision
+# DOP comparison data is taken from calibration1/comparison1.2
+
 #instrument matrix from calibration
 if 'linux' in platform:
     directory='acquisition/data/calibration4/comparison' #data location folder
@@ -19,7 +22,7 @@ if 'linux' in platform:
     Ainv=np.loadtxt('../Ainv.txt')
     Ainv_cov=pickle.load(open( "../Ainv_cov.p", "rb" ))
 else:
-    directory='acquisition\\data\\calibration4\\comparison' #data location folder
+    directory='acquisition\\data\\calibration1\\comparison1.2' #data location folder
     os.chdir(directory)
     Ainv=np.loadtxt('..\\Ainv.txt')
     Ainv_cov=pickle.load(open( "..\\Ainv_cov.p", "rb" ))
@@ -480,7 +483,7 @@ plt.show()
 
 #%% Save the figure
 savefig=1
-new_dir = 'dataset_1'
+new_dir = 'dataset_3'
 
 if savefig:
     left = os.getcwd()
